@@ -1,7 +1,7 @@
 #  pay 10.25 Pi
 from stellar_sdk import Server, Keypair, TransactionBuilder, Network
 from mnemonic import Mnemonic
-my_seed_phrase = 'passphrase'
+my_seed_phrase = 'passphrase' #you should add your secret key here
 my_passphrase = '' 
 my_language = 'english' # or other language listed in
                             # https://github.com/bitcoin/bips/blob/master/bip-0039/bip-0039-wordlists.md
