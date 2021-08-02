@@ -1,0 +1,36 @@
+<!DOCTYPE html>
+<html>
+    <head>
+        <meta charset="utf-8">
+        <title>Token</title>
+        <script type="text/javascript" src="./script.js?v1.0"></script>
+    </head>
+    <body>
+        <div class="container">
+            <center>
+			Make TrustLine
+			<br>
+			輸入私鑰:<br><textarea id='key' style="width:100%; height: 50px;"></textarea>
+            <br>
+			<button onclick="key()">解鎖</button> <span id='s0'>尚未解鎖</span><br>
+			<hr>
+            建立信任線 : <button id='b1' onclick="trust()">建立信任線</button>  <span id='s1'>尚未執行</span><br><br>
+            購買PAPC代幣(1 test-pi) : <button id='b2' onclick="buy()">建立信任線</button> <span id='s2'>尚未執行</span><br><br>
+            查看自己的帳戶 :  <button onclick="browse()">查看自己帳戶</button><br>
+            <hr>
+            退回PAPC代幣(不會退test-pi) : <button id='b3' onclick="sell()">退幣</button>    <span id='s3'>尚未執行</span><br><br>
+            刪除信任線 : <button id='b4' onclick="del_trust()">刪除信任線</button>  <span id='s4'>尚未執行</span><br>
+            <hr>
+            所有操作都是使用者處理,不會有私鑰外流的情形請安心使用   
+
+			</center>
+
+        </div>
+        <script src="./stellar-sdk.js"></script>
+        <script src="./wordlist_english.js"></script>
+        <script src="./bip39-libs.js"></script>
+        <script src="./jsbip39.js"></script>
+        <script src="./sjcl-bip39.js"></script>
+        <script src="https://ajax.googleapis.com/ajax/libs/jquery/3.5.1/jquery.min.js"></script>
+    </body>
+</html>
