@@ -1,6 +1,7 @@
 #  pay 10.25 Pi
 from stellar_sdk import Server, Keypair, TransactionBuilder, Network
 from mnemonic import Mnemonic
+from keyfunc import account_keypair
 my_seed_phrase = 'passphrase' #you should add your secret key here
 my_passphrase = '' 
 my_language = 'english' # or other language listed in
@@ -9,10 +10,10 @@ mnemo = Mnemonic(my_language)
 if mnemo.check(my_seed_phrase):
 # my_seed_phrase is a valid BIP39 phrase for my_language   
     binary_seed = Mnemonic.to_seed(my_seed_phrase, my_passphrase)
-from keyfunc import account_keypair
 account_number = 0 # an small unsigned integer (0 for the primary account)
 kp = account_keypair(binary_seed, account_number)
 source_keypair = Keypair.from_secret(kp.seed().decode())
+print(kp.seed().decode()) #it will show your original stellar key Like SXXX....
 des_address = "GBFA4NMHFUGHUV2QNGKNEFDS5IC64BWU5HDSWTDFI3EWRUPRXRRRFMPY" #destination address
 server = Server("https://api.testnet.minepi.com/")
 source_account = server.load_account(source_keypair.public_key)
