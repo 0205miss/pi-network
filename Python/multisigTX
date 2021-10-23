@@ -1,0 +1,22 @@
+from stellar_sdk import Server, Keypair, TransactionBuilder, Network
+first_key = Keypair.from_secret("input secret keys")
+second_key = Keypair.from_secret("input secret keys")
+
+des_address = "GCSXRBF3YP4NVB7XP2C35O6TWYUQTARNVYR5U6S2JI7RJFWP5JXC5XTY" #destination address
+server = Server("https://api.testnet.minepi.com/")
+source_account = server.load_account(first_key.public_key)
+base_fee = server.fetch_base_fee()
+transaction = (
+        TransactionBuilder(
+            source_account=source_account,
+            network_passphrase="Pi Testnet",
+            base_fee=base_fee,
+        )
+        .add_text_memo("Play By Pionner:0205miss")
+        .append_payment_op(des_address, "0.0000001", "XLM") #by using stellar_sdk their native asset is XLM
+        .append_set_options_op(source="GA3UB72I7WE7I77O3UM3BXKA42HRAKXHHRLZEJ7MM73UKWURUVV2RDLA")#This need same as second_key.public_key
+        .build()
+    )
+transaction.sign(first_key) #person1 sign it
+transaction.sign(second_key) #person2 sign it
+response = server.submit_transaction(transaction)
