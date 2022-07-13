@@ -5,4 +5,4 @@ You should install some library
 
 ``pip install mnemonic``
 
-``pip install stellar-sdk==4.1.0``
+``pip install -U stellar-sdk``
